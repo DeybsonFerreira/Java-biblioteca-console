@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
-
 import Biblioteca.Models.Periodicos;
 import Biblioteca.Operacoes.Constantes;
 import Biblioteca.Operacoes.ManipulaArquivo;
@@ -16,11 +15,7 @@ public class PeriodicosVet {
     Scanner ler = new Scanner(System.in);
 
     public PeriodicosVet() {
-        // construtor com chamada dos dados
-        try {
-            getPeriodicos();
-        } catch (IOException e) {
-        }
+
     }
 
     public ArrayList<Periodicos> getPeriodicos() throws IOException {
@@ -92,20 +87,7 @@ public class PeriodicosVet {
         linha += entrada + ";";
         periodico.setFatorImpacto(Float.parseFloat(entrada));
 
-        // inserir novo periodico no array
-        periodicos.add(periodico);
-
         Salvar.SalvarNovoDado(linha, Constantes.Url_Csv_Periodicos);
 
-    }
-
-    @Override
-    public String toString() {
-        String resposta = "";
-        int tam = periodicos.size();
-        for (int i = 0; i < tam; i++) {
-            resposta += (i + 1) + "." + this.periodicos.get(i).toString() + "\n";
-        }
-        return resposta;
     }
 }

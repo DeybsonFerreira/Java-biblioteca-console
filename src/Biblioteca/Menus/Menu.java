@@ -17,8 +17,7 @@ public class Menu {
             System.out.println("**************** BIBLIOTECA *************************");
             System.out.println("Escolha uma opção");
             System.out.println("[1] - Cadastros");
-            System.out.println("[2] - Empréstimo");
-            System.out.println("[3] - Relatórios");
+            System.out.println("[2] - Relatórios");
             System.out.println("[0] - Finalizar");
             System.out.println("**************** BIBLIOTECA *************************");
             entrada = lerTeclado.next();
@@ -40,9 +39,6 @@ public class Menu {
                     new Cadastro(lerTeclado).menuCadastros();
                     break;
                 case 2:
-                    new Emprestimo(lerTeclado).menuEmprestimo();
-                    break;
-                case 3:
                     new Relatorio(lerTeclado).menuRelatorios();
                 default:
                     System.out.println("Opção Inválida!");

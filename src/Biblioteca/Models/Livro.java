@@ -1,5 +1,4 @@
 package Biblioteca.Models;
-//<codigo>;<autor(es)>;<titulo>;<editora>;<tipo>;<ano de publicação>;<issn>
 
 public class Livro {
     private int codigo;
@@ -16,15 +15,15 @@ public class Livro {
         this.tipo = "";
     }
 
-    public Livro(int codigo, String autor, String titulo, String editora, String anoPublicado,
-            String issn, String tipo) {
+    public Livro(int codigo, String autor, String titulo, String editora,
+            String anoPublicado, String issn, String tipo) {
         this.codigo = codigo;
         this.autor = autor;
         this.titulo = titulo;
         this.editora = editora;
-        this.anoPublicado = anoPublicado;
         this.issn = issn;
         this.tipo = tipo;
+        this.anoPublicado = anoPublicado;
     }
 
     public int getCodigo() {
@@ -52,7 +51,7 @@ public class Livro {
     }
 
     public void setTipo(String tipo) {
-        this.titulo = tipo;
+        this.tipo = tipo;
     }
 
     public String getEditora() {
@@ -85,8 +84,16 @@ public class Livro {
 
     @Override
     public String toString() {
-        return "Livro [codigo=" + codigo + ", autor=" + autor + ", titulo=" + titulo + ", editora=" + editora
-                + ", anoPublicado=" + anoPublicado + ", issn=" + issn + "]";
+        // unica linha de resultados (com cabeçalho)
+        String resultadoLinha = "[Cod = " + codigo + "]";
+        resultadoLinha += " - [Autor = " + autor + "]";
+        resultadoLinha += " - [Titulo = " + titulo + "]";
+        resultadoLinha += " - [Editora = " + editora + "]";
+        resultadoLinha += " - [Tipo = " + tipo + "]";
+        resultadoLinha += " - [Ano = " + anoPublicado + "]";
+        resultadoLinha += " - [ISSN = " + issn + "]";
+
+        return resultadoLinha;
     }
 
 }

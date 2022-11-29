@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
-
 import Biblioteca.Models.Professor;
 import Biblioteca.Operacoes.Constantes;
 import Biblioteca.Operacoes.ManipulaArquivo;
@@ -16,11 +15,7 @@ public class ProfessorVet {
     Scanner ler = new Scanner(System.in);
 
     public ProfessorVet() {
-        // construtor com chamada dos dados
-        try {
-            getProfessores();
-        } catch (IOException e) {
-        }
+
     }
 
     public ArrayList<Professor> getProfessores() throws IOException {
@@ -79,20 +74,7 @@ public class ProfessorVet {
         linha += entrada + ";";
         professor.setSetor(entrada);
 
-        // inserir novo professor no array
-        professores.add(professor);
-
         Salvar.SalvarNovoDado(linha, Constantes.Url_Csv_Professor);
 
-    }
-
-    @Override
-    public String toString() {
-        String resposta = "";
-        int tam = professores.size();
-        for (int i = 0; i < tam; i++) {
-            resposta += (i + 1) + "." + this.professores.get(i).toString() + "\n";
-        }
-        return resposta;
     }
 }

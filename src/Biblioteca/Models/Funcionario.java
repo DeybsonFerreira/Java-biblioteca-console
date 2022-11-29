@@ -82,4 +82,17 @@ public class Funcionario {
     public void setNome(String nome) {
         this.nome = nome;
     }
+
+    @Override
+    public String toString() {
+        // unica linha de resultados (com cabeçalho)
+        String resultadoLinha = "[Matricula = " + matricula + "]";
+        resultadoLinha += " - [Nome = " + nome + "]";
+        resultadoLinha += " - [Endereco = " + endereco + "]";
+        resultadoLinha += " - [Ingresso = " + dataIngresso + "]";
+        resultadoLinha += " - [Setor = " + setor + "]";
+        resultadoLinha += " - [Senha = " + senha + "]";
+        resultadoLinha += " - [Login = " + login + "]";
+        return resultadoLinha;
+    }
 }

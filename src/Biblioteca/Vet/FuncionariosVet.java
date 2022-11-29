@@ -16,11 +16,7 @@ public class FuncionariosVet {
     Scanner ler = new Scanner(System.in);
 
     public FuncionariosVet() {
-        // construtor com chamada dos dados
-        try {
-            getFuncionarios();
-        } catch (IOException e) {
-        }
+
     }
 
     public ArrayList<Funcionario> getFuncionarios() throws IOException {
@@ -90,9 +86,6 @@ public class FuncionariosVet {
         entrada = ler.nextLine();
         linha += entrada + ";";
         funcionario.setSenha(entrada);
-
-        // inserir novo funcionario no array
-        funcionarios.add(funcionario);
 
         Salvar.SalvarNovoDado(linha, Constantes.Url_Csv_Funcionarios);
     }

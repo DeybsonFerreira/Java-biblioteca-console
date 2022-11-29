@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
-
 import Biblioteca.Models.Livro;
 import Biblioteca.Operacoes.Constantes;
 import Biblioteca.Operacoes.ManipulaArquivo;
@@ -15,11 +14,6 @@ public class LivroVet {
     Scanner ler = new Scanner(System.in);
 
     public LivroVet() {
-        // construtor com chamada dos dados
-        try {
-            getLivros();
-        } catch (IOException e) {
-        }
     }
 
     public ArrayList<Livro> getLivros() throws IOException {
@@ -35,13 +29,19 @@ public class LivroVet {
         for (int i = 0; i < numLinhas; i++) {
             linha = linhas.get(i);
             valorComSplit = linha.split(";");
+
+            String tipo = valorComSplit[4];
+            String ano = valorComSplit[5];
+            String issn = valorComSplit[6];
+
             livros.add(new Livro(
                     Integer.parseInt(valorComSplit[0]),
                     valorComSplit[1],
                     valorComSplit[2],
                     valorComSplit[3],
-                    valorComSplit[4],
-                    valorComSplit[5], linha));
+                    ano,
+                    issn,
+                    tipo));
 
         }
         this.livros = livros;
@@ -53,11 +53,12 @@ public class LivroVet {
 
         String entrada, linha = "";
         Livro livro = new Livro();
+
         System.out.printf("informe o CÓDIGO do Livro :");
         entrada = ler.nextLine();
         linha += entrada + ";";
-
         livro.setCodigo(Integer.parseInt(entrada));
+
         System.out.printf("informe o nome do AUTOR :");
         entrada = ler.nextLine();
         linha += entrada + ";";
@@ -76,7 +77,7 @@ public class LivroVet {
         System.out.printf("informe o TIPO do livro :");
         entrada = ler.nextLine();
         linha += entrada + ";";
-        livro.setEditora(entrada);
+        livro.setTipo(entrada);
 
         System.out.printf("informe o ANO de publicação  :");
         entrada = ler.nextLine();
@@ -88,21 +89,7 @@ public class LivroVet {
         linha += entrada + ";";
         livro.setIssn(entrada);
 
-        // inserir novo professor no array
-        livros.add(livro);
-
         Salvar.SalvarNovoDado(linha, Constantes.Url_Csv_Livros);
 
     }
-
-    @Override
-    public String toString() {
-        String resposta = "";
-        int tam = livros.size();
-        for (int i = 0; i < tam; i++) {
-            resposta += (i + 1) + "." + this.livros.get(i).toString() + "\n";
-        }
-        return resposta;
-    }
-
 }

@@ -16,11 +16,6 @@ public class AlunosVet {
     Scanner ler = new Scanner(System.in);
 
     public AlunosVet() {
-        // construtor com chamada dos dados
-        try {
-            getAlunos();
-        } catch (IOException e) {
-        }
     }
 
     public ArrayList<Alunos> getAlunos() throws IOException {
@@ -91,20 +86,6 @@ public class AlunosVet {
         linha += entrada + ";";
         alunos.setDataIngresso(entrada);
 
-        // inserir novo alunos no array
-        Alunos.add(alunos);
-
         Salvar.SalvarNovoDado(linha, Constantes.Url_Csv_Alunos);
-
-    }
-
-    @Override
-    public String toString() {
-        String resposta = "";
-        int tam = Alunos.size();
-        for (int i = 0; i < tam; i++) {
-            resposta += (i + 1) + "." + this.Alunos.get(i).toString() + "\n";
-        }
-        return resposta;
     }
 }

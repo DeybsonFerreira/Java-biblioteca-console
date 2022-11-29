@@ -72,4 +72,16 @@ public class Alunos {
     public void setNome(String nome) {
         this.nome = nome;
     }
+
+    @Override
+    public String toString() {
+        // unica linha de resultados (com cabeçalho)
+        String resultadoLinha = "[Matricula = " + matricula + "]";
+        resultadoLinha += " - [Nome = " + nome + "]";
+        resultadoLinha += " - [Endereco = " + endereco + "]";
+        resultadoLinha += " - [Curso = " + curso + "]";
+        resultadoLinha += " - [Ingresso = " + dataIngresso + "]";
+        resultadoLinha += " - [Multa = " + multa + "]";
+        return resultadoLinha;
+    }
 }

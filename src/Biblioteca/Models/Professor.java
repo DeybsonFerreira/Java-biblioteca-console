@@ -1,6 +1,5 @@
 package Biblioteca.Models;
 
-//<matrícula>;<nome>;<endereço>;<data-ingresso>;<setor>
 public class Professor {
     private int matricula;
     private String nome, endereco, dataIngresso, setor;
@@ -65,7 +64,11 @@ public class Professor {
 
     @Override
     public String toString() {
-        return "Professor [matricula=" + matricula + ", nome=" + nome + ", endereco=" + endereco + ", dataIngresso="
-                + dataIngresso + ", setor=" + setor + "]";
+        String resultadoLinha = "[Matrícula = " + matricula + "]";
+        resultadoLinha += " [Nome = " + nome + "]";
+        resultadoLinha += " [Endereco = " + endereco + "]";
+        resultadoLinha += " [Ingresso = " + dataIngresso + "]";
+        resultadoLinha += " [Setor = " + setor + "]";
+        return resultadoLinha;
     }
 }

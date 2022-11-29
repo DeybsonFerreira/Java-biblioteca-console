@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.Scanner;
 
 import Biblioteca.Vet.AlunosVet;
+import Biblioteca.Vet.EmprestimoVet;
 import Biblioteca.Vet.FuncionariosVet;
 import Biblioteca.Vet.LivroVet;
 import Biblioteca.Vet.PeriodicosVet;
@@ -16,8 +17,8 @@ public class Cadastro {
     private AlunosVet alunos = new AlunosVet();
     private FuncionariosVet funcionarios = new FuncionariosVet();
     private PeriodicosVet periodicos = new PeriodicosVet();
-
     private LivroVet livros = new LivroVet();
+    private EmprestimoVet emprestimos = new EmprestimoVet();
 
     public Cadastro(Scanner teclado) {
         lerTeclado = teclado;
@@ -30,13 +31,16 @@ public class Cadastro {
         int valorMenu = 1;
         while (valorMenu != 0) {
 
-            System.out.println("Escolha um Cadastro");
+            System.out.println("************* Escolha um Cadastro***************");
             System.out.println("[1] - Professor");
             System.out.println("[2] - Alunos");
             System.out.println("[3] - Funcionário");
             System.out.println("[4] - Livro");
             System.out.println("[5] - Periódico");
+            System.out.println("[6] - Empréstimo");
+            System.out.println("[7] - Devolução");
             System.out.println("[0] - Voltar para menu principal");
+            System.out.println("************* Escolha um Cadastro***************");
 
             entrada = lerTeclado.next();
 
@@ -65,6 +69,13 @@ public class Cadastro {
                 case 5:
                     periodicos.cadastrarPeriodicos();
                     break;
+                case 6:
+                    emprestimos.criarEmprestimo();
+                    break;
+                case 7:
+                    emprestimos.criarDevolucao();
+                    break;
+
                 default:
                     System.out.println("Opção Inválida!");
             }
