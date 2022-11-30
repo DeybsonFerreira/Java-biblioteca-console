@@ -86,6 +86,7 @@ public class AlunosVet {
         linha += entrada + ";";
         alunos.setDataIngresso(entrada);
 
-        Salvar.SalvarNovoDado(linha, Constantes.Url_Csv_Alunos);
+        String cabecalho = "";
+        Salvar.SalvarNovoDado(linha, Constantes.Url_Csv_Alunos, cabecalho);
     }
 }

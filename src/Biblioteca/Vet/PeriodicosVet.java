@@ -87,7 +87,8 @@ public class PeriodicosVet {
         linha += entrada + ";";
         periodico.setFatorImpacto(Float.parseFloat(entrada));
 
-        Salvar.SalvarNovoDado(linha, Constantes.Url_Csv_Periodicos);
+        String cabecalho = "";
+        Salvar.SalvarNovoDado(linha, Constantes.Url_Csv_Periodicos, cabecalho);
 
     }
 }

@@ -8,7 +8,7 @@ import Biblioteca.Menus.Menu;
 
 public class Salvar {
 
-    public static void SalvarNovoDado(String novaLinha, String url) {
+    public static void SalvarNovoDado(String novaLinha, String url, String cabecalho) {
 
         List<String> listaExcel = new ArrayList<String>();
 
@@ -19,6 +19,7 @@ public class Salvar {
 
         }
         // adicionar nova linha dentro das lista existente
+        listaExcel.add(cabecalho);
         listaExcel.add(novaLinha);
 
         // salvar toda lista no csv ( com o dado novo)

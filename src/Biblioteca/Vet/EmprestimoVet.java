@@ -130,10 +130,8 @@ public class EmprestimoVet {
         linha += entrada + ";";
         emprestimo.setDataEmprestimo(entrada);
 
-        // inserir novo emprestimo no array
-        emprestimos.add(emprestimo);
-
-        Salvar.SalvarNovoDado(linha, Constantes.Url_Csv_Emprestimos);
+        String cabecalho = "";
+        Salvar.SalvarNovoDado(linha, Constantes.Url_Csv_Emprestimos, cabecalho);
     }
 
     public void criarDevolucao() throws IOException {

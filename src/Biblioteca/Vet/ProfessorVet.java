@@ -76,7 +76,8 @@ public class ProfessorVet {
             linha += entrada + ";";
             professor.setSetor(entrada);
 
-            Salvar.SalvarNovoDado(linha, Constantes.Url_Csv_Professor);
+            String cabecalho = "CÓDIGO;NOME;ENDERECO;DATA;SETOR";
+            Salvar.SalvarNovoDado(linha, Constantes.Url_Csv_Professor, cabecalho);
         } catch (Exception ex) {
             System.out.printf("Houve um erro no processo de cadastro de professor: ");
         }

@@ -87,6 +87,7 @@ public class FuncionariosVet {
         linha += entrada + ";";
         funcionario.setSenha(entrada);
 
-        Salvar.SalvarNovoDado(linha, Constantes.Url_Csv_Funcionarios);
+        String cabecalho = "";
+        Salvar.SalvarNovoDado(linha, Constantes.Url_Csv_Funcionarios, cabecalho);
     }
 }
