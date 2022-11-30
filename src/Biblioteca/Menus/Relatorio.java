@@ -20,12 +20,12 @@ public class Relatorio {
         while (continuar != 0) {
 
             System.out.println("Escolha o Relatório desejado");
-            System.out.println("[1] - Livros cadastrados");
-            System.out.println("[2] - Empréstimos realizados");
+            System.out.println("[1] - Professores cadastrados");
+            System.out.println("[2] - Alunos cadastrados");
             System.out.println("[3] - Funcionários cadastrados");
-            System.out.println("[4] - Alunos cadastrados");
-            System.out.println("[5] - Professores cadastrados");
-            System.out.println("[6] - Imprimir multa individual");
+            System.out.println("[4] - Livros cadastrados");
+            System.out.println("[5] - Periódicos cadastrados");
+            System.out.println("[6] - Empréstimos realizados");
             System.out.println("[0] - Voltar para menu principal");
             entrada = lerTeclado.next();
 
@@ -42,19 +42,22 @@ public class Relatorio {
                     continuar = 0;
                     break;
                 case 1:
-                    Buscar.mostrarListaLivros();
+                    Buscar.mostrarProfessores();
                     break;
                 case 2:
-                    Buscar.mostrarEmprestimos();
+                    Buscar.mostrarAlunos();
                     break;
                 case 3:
                     Buscar.mostrarFuncionario();
                     break;
                 case 4:
-                    Buscar.mostrarAlunos();
+                    Buscar.mostrarListaLivros();
                     break;
                 case 5:
-                    Buscar.mostrarProfessores();
+                    Buscar.mostrarPeriodicos();
+                    break;
+                case 6:
+                    Buscar.mostrarEmprestimos();
                     break;
 
                 default:

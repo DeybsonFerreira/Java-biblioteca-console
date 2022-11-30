@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+
+import Biblioteca.Models.Alunos;
 import Biblioteca.Models.Emprestimo;
 import Biblioteca.Operacoes.Constantes;
 import Biblioteca.Operacoes.ManipulaArquivo;
@@ -68,9 +70,9 @@ public class EmprestimoVet {
             String dataDevolucao = ObterDataDevolucao(valorComSplit);
 
             emprestimos.add(new Emprestimo(
-                    Long.parseLong(codigo),
-                    Long.parseLong(matriculaCliente),
-                    Long.parseLong(matriculaFuncionario),
+                    Integer.parseInt(codigo),
+                    Integer.parseInt(matriculaCliente),
+                    Integer.parseInt(matriculaFuncionario),
                     dataEmprestimo,
                     dataDevolucao));
         }
@@ -87,17 +89,41 @@ public class EmprestimoVet {
         System.out.printf("Informe o CÓDIGO do empréstimo :");
         entrada = ler.nextLine();
         linha += entrada + ";";
-        emprestimo.setCodigo(Long.parseLong(entrada));
+        emprestimo.setCodigo(Integer.parseInt(entrada));
 
-        System.out.printf("Informe a MATRÍCULA do cliente :");
-        entrada = ler.nextLine();
-        linha += entrada + ";";
-        emprestimo.setMatriculaCliente(Long.parseLong(entrada));
+        /******************** */
+        AlunosVet alunos = new AlunosVet();
+        ArrayList<Alunos> listaAlunos = alunos.getAlunos();
+        boolean existeCodigoAluno = false;
+        int codigoDigitado = 0;
+
+        // código do cliente (aluno)
+        System.out.println("Escolha o CÓDIGO do ALUNO, para o empréstimo");
+        while (existeCodigoAluno == false) {
+
+            for (Alunos aluno : listaAlunos) {
+                System.out.println("> [CODIGO] " + aluno.getMatricula() + " - [ALUNO] " +
+                        aluno.getNome() + "");
+            }
+            entrada = ler.nextLine();
+            codigoDigitado = Integer.parseInt(entrada);
+
+            // verificar se existe aluno
+            for (Alunos aluno : listaAlunos) {
+                if (codigoDigitado == aluno.getMatricula()) {
+                    linha += entrada + ";";
+                    existeCodigoAluno = true;
+                    emprestimo.setMatriculaCliente(codigoDigitado);
+                } else {
+                    System.out.println(" CÓDIGO não encontrado, escolha novamente");
+                }
+            }
+        }
 
         System.out.printf("Informe a MATRÍCULA do funcionário :");
         entrada = ler.nextLine();
         linha += entrada + ";";
-        emprestimo.setMatriculaFuncionario(Long.parseLong(entrada));
+        emprestimo.setMatriculaFuncionario(Integer.parseInt(entrada));
 
         System.out.printf("Informe a DATA do emprestimo :");
         entrada = ler.nextLine();
@@ -120,7 +146,7 @@ public class EmprestimoVet {
         System.out.printf("Informe o CÓDIGO do empréstimo :");
         entrada = ler.nextLine();
         linha += entrada + ";";
-        emprestimo.setCodigo(Long.parseLong(entrada));
+        emprestimo.setCodigo(Integer.parseInt(entrada));
 
         System.out.printf("Informe a DATA da DEVOLUÇÃO :");
         entrada = ler.nextLine();

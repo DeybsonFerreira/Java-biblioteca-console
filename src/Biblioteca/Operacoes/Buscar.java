@@ -6,11 +6,13 @@ import Biblioteca.Models.Alunos;
 import Biblioteca.Models.Emprestimo;
 import Biblioteca.Models.Funcionario;
 import Biblioteca.Models.Livro;
+import Biblioteca.Models.Periodicos;
 import Biblioteca.Models.Professor;
 import Biblioteca.Vet.AlunosVet;
 import Biblioteca.Vet.EmprestimoVet;
 import Biblioteca.Vet.FuncionariosVet;
 import Biblioteca.Vet.LivroVet;
+import Biblioteca.Vet.PeriodicosVet;
 import Biblioteca.Vet.ProfessorVet;
 
 public class Buscar {
@@ -110,7 +112,7 @@ public class Buscar {
             System.out.println("\n \n ");
 
         } catch (IOException e) {
-            System.out.println("\n ************ Não Existe Empréstimos Cadastrados! ************* \n \n ");
+            System.out.println("\n ************ Não Existe EMPRÉSTIMOS Cadastrados! ************* \n \n ");
         }
     }
 
@@ -136,6 +138,31 @@ public class Buscar {
 
         } catch (IOException e) {
             System.out.println("\n ************ Não Existe PROFESSORES Cadastrados! ************* \n \n ");
+        }
+    }
+
+    public static void mostrarPeriodicos() {
+        PeriodicosVet operacao = new PeriodicosVet();
+
+        try {
+
+            ArrayList<Periodicos> lista = operacao.getPeriodicos();
+            int qtd = lista.size();
+            if (qtd == 0) {
+                System.out.println("\n ************ Não Existe PERIÓDICOS Cadastrados! ************* \n \n ");
+                return;
+            }
+
+            System.out.println("................. PERIÓDICOS [" + (qtd) + "].....................");
+            for (int i = 0; i < lista.size(); i++) {
+                Periodicos item = lista.get(i);
+                System.out.println(item.toString());
+            }
+
+            System.out.println("\n \n ");
+
+        } catch (IOException e) {
+            System.out.println("\n ************ Não Existe PERIÓDICOS Cadastrados! ************* \n \n ");
         }
     }
 }

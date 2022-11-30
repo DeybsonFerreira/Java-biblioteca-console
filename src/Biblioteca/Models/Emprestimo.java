@@ -2,12 +2,12 @@ package Biblioteca.Models;
 
 public class Emprestimo {
 
-    private long codigo, matriculaCliente, matriculaFuncionario;
+    private int codigo, matriculaCliente, matriculaFuncionario;
 
     private String dataEmprestimo, dataDevolucao;
 
     public Emprestimo(
-            long codigo, long matriculaCliente, long matriculaFuncionario, String dataEmprestimo,
+            int codigo, int matriculaCliente, int matriculaFuncionario, String dataEmprestimo,
             String dataDevolucao) {
         super();
         this.codigo = codigo;
@@ -42,27 +42,27 @@ public class Emprestimo {
         this.dataDevolucao = dataDevolucao;
     }
 
-    public long getCodigo() {
+    public int getCodigo() {
         return codigo;
     }
 
-    public void setCodigo(long codigo) {
+    public void setCodigo(int codigo) {
         this.codigo = codigo;
     }
 
-    public long getMatriculaCliente() {
+    public int getMatriculaCliente() {
         return matriculaCliente;
     }
 
-    public void setMatriculaCliente(long matriculaCliente) {
+    public void setMatriculaCliente(int matriculaCliente) {
         this.matriculaCliente = matriculaCliente;
     }
 
-    public long getMatriculaFuncionario() {
+    public int getMatriculaFuncionario() {
         return matriculaFuncionario;
     }
 
-    public void setMatriculaFuncionario(long matriculaFuncionario) {
+    public void setMatriculaFuncionario(int matriculaFuncionario) {
         this.matriculaFuncionario = matriculaFuncionario;
     }
 

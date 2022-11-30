@@ -82,7 +82,7 @@ public class PeriodicosVet {
         linha += entrada + ";";
         periodico.setIssn(entrada);
 
-        System.out.printf("Informe o Fator de impacto ");
+        System.out.printf("Informe o Fator (R$)  de impacto ");
         entrada = ler.nextLine();
         linha += entrada + ";";
         periodico.setFatorImpacto(Float.parseFloat(entrada));

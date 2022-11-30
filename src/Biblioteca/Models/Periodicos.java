@@ -85,4 +85,17 @@ public class Periodicos {
         this.codigo = codigo;
     }
 
+    @Override
+    public String toString() {
+        // unica linha de resultados (com cabeçalho)
+        String resultadoLinha = "[Cod = " + codigo + "]";
+        resultadoLinha += " - [Autor = " + autor + "]";
+        resultadoLinha += " - [Titulo = " + titulo + "]";
+        resultadoLinha += " - [Editora = " + editora + "]";
+        resultadoLinha += " - [Tipo = " + tipo + "]";
+        resultadoLinha += " - [ISSN = " + issn + "]";
+        resultadoLinha += " - [fatorImpacto = R$" + fatorImpacto + "]";
+
+        return resultadoLinha;
+    }
 }
