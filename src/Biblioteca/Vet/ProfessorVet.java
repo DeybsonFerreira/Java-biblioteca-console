@@ -43,38 +43,42 @@ public class ProfessorVet {
         this.professores = professores;
     }
 
-    public void cadastrarProfessores() throws IOException {
+    public void cadastrarProfessores() {
 
-        System.out.println("*********** CADASTRAR PROFESSOR *********** \n");
+        try {
 
-        String entrada, linha = "";
-        Professor professor = new Professor();
-        System.out.printf("Informe o Número da matrícula do professor: ");
-        entrada = ler.nextLine();
-        linha += entrada + ";";
+            System.out.println("*********** CADASTRAR PROFESSOR *********** \n");
 
-        professor.setMatricula(Integer.parseInt(entrada));
-        System.out.printf("Informe o Nome do professor: ");
-        entrada = ler.nextLine();
-        linha += entrada + ";";
+            String entrada, linha = "";
+            Professor professor = new Professor();
+            System.out.printf("Informe o Número da matrícula do professor: ");
+            entrada = ler.nextLine();
+            linha += entrada + ";";
 
-        professor.setNome(entrada);
-        System.out.printf("Informe o endereço do professor: ");
-        entrada = ler.nextLine();
-        linha += entrada + ";";
+            professor.setMatricula(Integer.parseInt(entrada));
+            System.out.printf("Informe o Nome do professor: ");
+            entrada = ler.nextLine();
+            linha += entrada + ";";
 
-        professor.setEndereco(entrada);
-        System.out.printf("Informe a data de ingresso do professor: ");
-        entrada = ler.nextLine();
-        linha += entrada + ";";
+            professor.setNome(entrada);
+            System.out.printf("Informe o endereço do professor: ");
+            entrada = ler.nextLine();
+            linha += entrada + ";";
 
-        professor.setDataIngresso(entrada);
-        System.out.printf("Informe o setor do professor: ");
-        entrada = ler.nextLine();
-        linha += entrada + ";";
-        professor.setSetor(entrada);
+            professor.setEndereco(entrada);
+            System.out.printf("Informe a data de ingresso do professor: ");
+            entrada = ler.nextLine();
+            linha += entrada + ";";
 
-        Salvar.SalvarNovoDado(linha, Constantes.Url_Csv_Professor);
+            professor.setDataIngresso(entrada);
+            System.out.printf("Informe o setor do professor: ");
+            entrada = ler.nextLine();
+            linha += entrada + ";";
+            professor.setSetor(entrada);
 
+            Salvar.SalvarNovoDado(linha, Constantes.Url_Csv_Professor);
+        } catch (Exception ex) {
+            System.out.printf("Houve um erro no processo de cadastro de professor: ");
+        }
     }
 }

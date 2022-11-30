@@ -8,6 +8,7 @@ public class Menu {
     private Scanner lerTeclado = new Scanner(System.in);
 
     public void menuPrincipal() throws IOException {
+
         String entrada = "";
         int continuar = 1;
         int valorMenu = 0;
