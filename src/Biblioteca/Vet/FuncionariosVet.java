@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Scanner;
 
 import Biblioteca.Models.Funcionario;
+import Biblioteca.Operacoes.Cabecalho;
 import Biblioteca.Operacoes.Constantes;
 import Biblioteca.Operacoes.ManipulaArquivo;
 import Biblioteca.Operacoes.Salvar;
@@ -34,8 +35,13 @@ public class FuncionariosVet {
         for (int i = 0; i < numLinhas; i++) {
             linha = linhas.get(i);
             valorComSplit = linha.split(";");
+
+            String matricula = valorComSplit[0];
+            if (matricula.contains(Cabecalho.Funcionario.split(";")[0]))
+                continue;
+
             funcionarios.add(new Funcionario(
-                    Integer.parseInt(valorComSplit[0]),
+                    Integer.parseInt(matricula),
                     valorComSplit[1],
                     valorComSplit[2],
                     valorComSplit[3],
@@ -87,7 +93,6 @@ public class FuncionariosVet {
         linha += entrada + ";";
         funcionario.setSenha(entrada);
 
-        String cabecalho = "";
-        Salvar.SalvarNovoDado(linha, Constantes.Url_Csv_Funcionarios, cabecalho);
+        Salvar.SalvarNovoDado(linha, Constantes.Url_Csv_Funcionarios, Cabecalho.Funcionario);
     }
 }

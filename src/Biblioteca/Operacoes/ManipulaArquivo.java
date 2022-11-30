@@ -34,4 +34,5 @@ public class ManipulaArquivo {
         }
         escritor(localArquivo, linhaCompleta);
     }
+
 }

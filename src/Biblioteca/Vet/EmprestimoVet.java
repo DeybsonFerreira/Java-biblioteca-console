@@ -7,6 +7,7 @@ import java.util.Scanner;
 
 import Biblioteca.Models.Alunos;
 import Biblioteca.Models.Emprestimo;
+import Biblioteca.Operacoes.Cabecalho;
 import Biblioteca.Operacoes.Constantes;
 import Biblioteca.Operacoes.ManipulaArquivo;
 import Biblioteca.Operacoes.Salvar;
@@ -55,6 +56,9 @@ public class EmprestimoVet {
             valorComSplit = linha.split(";");
 
             String codigo = valorComSplit[0];
+            if (codigo.contains(Cabecalho.Emprestimo.split(";")[0]))
+                continue;
+
             if (codigo.isEmpty())
                 codigo = "0";
 
@@ -130,8 +134,7 @@ public class EmprestimoVet {
         linha += entrada + ";";
         emprestimo.setDataEmprestimo(entrada);
 
-        String cabecalho = "";
-        Salvar.SalvarNovoDado(linha, Constantes.Url_Csv_Emprestimos, cabecalho);
+        Salvar.SalvarNovoDado(linha, Constantes.Url_Csv_Emprestimos, Cabecalho.Emprestimo);
     }
 
     public void criarDevolucao() throws IOException {

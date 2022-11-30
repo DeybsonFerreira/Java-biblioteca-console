@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 import Biblioteca.Models.Livro;
+import Biblioteca.Operacoes.Cabecalho;
 import Biblioteca.Operacoes.Constantes;
 import Biblioteca.Operacoes.ManipulaArquivo;
 import Biblioteca.Operacoes.Salvar;
@@ -30,12 +31,16 @@ public class LivroVet {
             linha = linhas.get(i);
             valorComSplit = linha.split(";");
 
+            String codigo = valorComSplit[0];
+            if (codigo.contains(Cabecalho.Livro.split(";")[0]))
+                continue;
+
             String tipo = valorComSplit[4];
             String ano = valorComSplit[5];
             String issn = valorComSplit[6];
 
             livros.add(new Livro(
-                    Integer.parseInt(valorComSplit[0]),
+                    Integer.parseInt(codigo),
                     valorComSplit[1],
                     valorComSplit[2],
                     valorComSplit[3],
@@ -89,8 +94,6 @@ public class LivroVet {
         linha += entrada + ";";
         livro.setIssn(entrada);
 
-        String cabecalho = "";
-        Salvar.SalvarNovoDado(linha, Constantes.Url_Csv_Livros, cabecalho);
-
+        Salvar.SalvarNovoDado(linha, Constantes.Url_Csv_Livros, Cabecalho.Livro);
     }
 }

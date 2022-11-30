@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Scanner;
 
 import Biblioteca.Models.Alunos;
+import Biblioteca.Operacoes.Cabecalho;
 import Biblioteca.Operacoes.Constantes;
 import Biblioteca.Operacoes.ManipulaArquivo;
 import Biblioteca.Operacoes.Salvar;
@@ -34,8 +35,12 @@ public class AlunosVet {
             linha = linhas.get(i);
             valorComSplit = linha.split(";");
 
+            String matricula = valorComSplit[0];
+            if (matricula.contains(Cabecalho.Aluno.split(";")[0]))
+                continue;
+
             Alunos.add(new Alunos(
-                    Integer.parseInt(valorComSplit[0]),
+                    Integer.parseInt(matricula),
                     valorComSplit[1],
                     valorComSplit[2],
                     valorComSplit[3],
@@ -86,7 +91,6 @@ public class AlunosVet {
         linha += entrada + ";";
         alunos.setDataIngresso(entrada);
 
-        String cabecalho = "";
-        Salvar.SalvarNovoDado(linha, Constantes.Url_Csv_Alunos, cabecalho);
+        Salvar.SalvarNovoDado(linha, Constantes.Url_Csv_Alunos, Cabecalho.Aluno);
     }
 }

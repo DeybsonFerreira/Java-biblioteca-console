@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 import Biblioteca.Models.Periodicos;
+import Biblioteca.Operacoes.Cabecalho;
 import Biblioteca.Operacoes.Constantes;
 import Biblioteca.Operacoes.ManipulaArquivo;
 import Biblioteca.Operacoes.Salvar;
@@ -33,8 +34,13 @@ public class PeriodicosVet {
         for (int i = 0; i < numLinhas; i++) {
             linha = linhas.get(i);
             valorComSplit = linha.split(";");
+
+            String codigo = valorComSplit[0];
+            if (codigo.contains(Cabecalho.Periodico.split(";")[0]))
+                continue;
+
             periodicos.add(new Periodicos(
-                    Integer.parseInt(valorComSplit[0]),
+                    Integer.parseInt(codigo),
                     valorComSplit[1],
                     valorComSplit[2],
                     valorComSplit[3],
@@ -87,8 +93,6 @@ public class PeriodicosVet {
         linha += entrada + ";";
         periodico.setFatorImpacto(Float.parseFloat(entrada));
 
-        String cabecalho = "";
-        Salvar.SalvarNovoDado(linha, Constantes.Url_Csv_Periodicos, cabecalho);
-
+        Salvar.SalvarNovoDado(linha, Constantes.Url_Csv_Periodicos, Cabecalho.Periodico);
     }
 }

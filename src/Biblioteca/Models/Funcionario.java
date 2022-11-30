@@ -11,20 +11,20 @@ public class Funcionario {
         this.endereco = "";
         this.setor = "";
         this.dataIngresso = "";
-        this.senha = "";
         this.login = "";
+        this.senha = "";
     }
 
-    public Funcionario(int matricula, String nome, String endereco, String setor, String dataIngresso, String senha,
-            String login) {
+    public Funcionario(int matricula, String nome, String endereco, String setor, String dataIngresso,
+            String login, String senha) {
         super();
         this.matricula = matricula;
         this.nome = nome;
         this.endereco = endereco;
         this.setor = setor;
         this.dataIngresso = dataIngresso;
-        this.senha = senha;
         this.login = login;
+        this.senha = senha;
     }
 
     public int getMatricula() {

@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 import Biblioteca.Models.Professor;
+import Biblioteca.Operacoes.Cabecalho;
 import Biblioteca.Operacoes.Constantes;
 import Biblioteca.Operacoes.ManipulaArquivo;
 import Biblioteca.Operacoes.Salvar;
@@ -33,8 +34,13 @@ public class ProfessorVet {
         for (int i = 0; i < numLinhas; i++) {
             linha = linhas.get(i);
             valorComSplit = linha.split(";");
+
+            String codigo = valorComSplit[0];
+            if (codigo.contains(Cabecalho.Professor.split(";")[0]))
+                continue;
+
             professores.add(new Professor(
-                    Integer.parseInt(valorComSplit[0]),
+                    Integer.parseInt(codigo),
                     valorComSplit[1],
                     valorComSplit[2],
                     valorComSplit[3],
@@ -76,8 +82,7 @@ public class ProfessorVet {
             linha += entrada + ";";
             professor.setSetor(entrada);
 
-            String cabecalho = "CÓDIGO;NOME;ENDERECO;DATA;SETOR";
-            Salvar.SalvarNovoDado(linha, Constantes.Url_Csv_Professor, cabecalho);
+            Salvar.SalvarNovoDado(linha, Constantes.Url_Csv_Professor, Cabecalho.Professor);
         } catch (Exception ex) {
             System.out.printf("Houve um erro no processo de cadastro de professor: ");
         }
