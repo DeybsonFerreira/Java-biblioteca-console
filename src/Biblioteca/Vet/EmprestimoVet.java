@@ -7,6 +7,7 @@ import java.util.Scanner;
 
 import Biblioteca.Models.Alunos;
 import Biblioteca.Models.Emprestimo;
+import Biblioteca.Models.Funcionario;
 import Biblioteca.Operacoes.Cabecalho;
 import Biblioteca.Operacoes.Constantes;
 import Biblioteca.Operacoes.ManipulaArquivo;
@@ -97,11 +98,16 @@ public class EmprestimoVet {
 
         /******************** */
         AlunosVet alunos = new AlunosVet();
+        FuncionariosVet funcionarios = new FuncionariosVet();
+
         ArrayList<Alunos> listaAlunos = alunos.getAlunos();
+        ArrayList<Funcionario> listaFuncionario = funcionarios.getFuncionarios();
+
         boolean existeCodigoAluno = false;
+        boolean existeCodigoFuncionario = false;
         int codigoDigitado = 0;
 
-        // código do cliente (aluno)
+        // SELECIONAR CLIENTE
         System.out.println("Escolha o CÓDIGO do ALUNO, para o empréstimo");
         while (existeCodigoAluno == false) {
 
@@ -117,17 +123,36 @@ public class EmprestimoVet {
                 if (codigoDigitado == aluno.getMatricula()) {
                     linha += entrada + ";";
                     existeCodigoAluno = true;
-                    emprestimo.setMatriculaCliente(codigoDigitado);
+                    emprestimo.setMatriculaCliente(Integer.parseInt(entrada));
                 } else {
                     System.out.println(" CÓDIGO não encontrado, escolha novamente");
                 }
             }
         }
 
-        System.out.printf("Informe a MATRÍCULA do funcionário :");
-        entrada = ler.nextLine();
-        linha += entrada + ";";
-        emprestimo.setMatriculaFuncionario(Integer.parseInt(entrada));
+        // SELECIONAR FUNCIONARIO
+        System.out.println("Escolha o CÓDIGO do FUNCIONÁRIO");
+        while (existeCodigoFuncionario == false) {
+
+            for (Funcionario funcionario : listaFuncionario) {
+                System.out.println("> [CODIGO] " + funcionario.getMatricula() + " - [FUNCIONARIO] " +
+                funcionario.getNome() + "");
+            }
+            entrada = ler.nextLine();
+            codigoDigitado = Integer.parseInt(entrada);
+
+            // verificar se existe funcionario
+            for (Funcionario funcionario : listaFuncionario) {
+                if (codigoDigitado == funcionario.getMatricula()) {
+                    linha += entrada + ";";
+                    existeCodigoFuncionario = true;
+                    emprestimo.setMatriculaFuncionario(Integer.parseInt(entrada));
+                } else {
+                    System.out.println(" CÓDIGO não encontrado, escolha novamente");
+                }
+            }
+        }
+
 
         System.out.printf("Informe a DATA do emprestimo :");
         entrada = ler.nextLine();
